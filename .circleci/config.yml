@@ -1,0 +1,23 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@2.1.0
+executors:
+  with-chrome: 
+    docker: 
+      - image: 'cypress/browsers:node16.14.2-slim-chrome103-ff102'
+workflows:
+  build:
+    jobs:
+      - cypress/run:
+          executors: with-chrome
+          browser: chrome
+          start: 'npm start'
+          wait-on: "http://localhost:3000"
+          record: true
+          parallel: true
+          parallelism: 2
+          group: "Chrome - 2x" 
+          store_artifacts: true
+          post-steps:
+            - store_test_results:
+              path: cypress/results
