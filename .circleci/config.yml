@@ -9,7 +9,7 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          executors: with-chrome
+          executor: with-chrome
           browser: chrome
           start: 'npm start'
           wait-on: "http://localhost:3000"
