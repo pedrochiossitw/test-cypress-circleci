@@ -16,8 +16,8 @@ workflows:
           record: true
           parallel: true
           parallelism: 2
-          group: "Chrome - 2x" 
+          group: "all tests" 
           store_artifacts: true
           post-steps:
             - store_test_results:
-              path: cypress/results
+                path: cypress/results
